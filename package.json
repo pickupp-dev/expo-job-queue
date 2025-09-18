@@ -1,6 +1,6 @@
 {
   "name": "expo-sqlite-job-queue",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "An SQLite based job queue for Expo",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -37,14 +37,14 @@
     "android"
   ],
   "repository": {
-    "url": "https://github.com/pickupp-dev/expo-job-queue"
+    "url": "https://github.com/pickupp-dev/expo-sqlite-job-queue"
   },
   "author": "Cas Chan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pickupp-dev/expo-job-queue/issues"
+    "url": "https://github.com/pickupp-dev/expo-sqlite-job-queue/issues"
   },
-  "homepage": "https://github.com/pickupp-dev/expo-job-queue#readme",
+  "homepage": "https://github.com/pickupp-dev/expo-sqlite-job-queue#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

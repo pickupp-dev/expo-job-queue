@@ -35,7 +35,7 @@ export class QueueStore {
       scheduled_for CHAR(255) NOT NULL DEFAULT "now",
       failed CHAR(255),
       timeout INTEGER NOT NULL,
-      priority Integer NOT NULL,
+      priority Integer NOT NULL
       );`,
     )
   }

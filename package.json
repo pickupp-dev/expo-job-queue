@@ -36,13 +36,15 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/SomethingCo/expo-job-queue",
-  "author": "Something Corp <info@smtg.co> (https://github.com/SomethingCo)",
+  "repository": {
+    "url": "https://github.com/pickupp-dev/expo-job-queue"
+  },
+  "author": "Cas Chan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SomethingCo/expo-job-queue/issues"
+    "url": "https://github.com/pickupp-dev/expo-job-queue/issues"
   },
-  "homepage": "https://github.com/SomethingCo/expo-job-queue#readme",
+  "homepage": "https://github.com/pickupp-dev/expo-job-queue#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

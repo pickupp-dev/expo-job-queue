@@ -1,6 +1,6 @@
 {
   "name": "expo-sqlite-job-queue",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "An SQLite based job queue for Expo",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -174,7 +174,11 @@
     },
     "overrides": [
       {
-        "files": ["*.js", "**/*.config.js", "scripts/*.js"],
+        "files": [
+          "*.js",
+          "**/*.config.js",
+          "scripts/*.js"
+        ],
         "rules": {
           "@typescript-eslint/no-require-imports": "off"
         }

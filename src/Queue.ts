@@ -299,7 +299,9 @@ export class Queue {
   }
 
   private limitExecution = async (executer: (rawJob: RawJob) => Promise<void>, rawJob: RawJob) => {
-    return new Promise(async (resolve) => await this.enqueueJobExecuter(executer, resolve, rawJob))
+    return new Promise((resolve) => {
+      this.enqueueJobExecuter(executer, resolve, rawJob)
+    })
   }
 
   private enqueueJobExecuter = async (
@@ -403,8 +405,10 @@ export class Queue {
     } catch (error) {
       worker.triggerFailure(job, error as Error)
       const { attempts } = rawJob
-      let { errors, failedAttempts, retryIn } = JSON.parse(rawJob.metaData)
-      failedAttempts++
+      const md = JSON.parse(rawJob.metaData)
+      const errors = md.errors
+      const failedAttempts = md.failedAttempts + 1
+      const retryIn = md.retryIn
       let failed = ""
       if (failedAttempts >= attempts) {
         failed = new Date().toISOString()

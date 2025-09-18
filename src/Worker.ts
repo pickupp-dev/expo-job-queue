@@ -94,7 +94,7 @@ export class Worker<P extends Record<string, unknown>> {
 
   private executeWithTimeout(job: Job<P>, timeout: number) {
     let cancel
-    const promise: CancellablePromise<any> = new Promise(async (resolve, reject) => {
+    const promise: CancellablePromise<any> = new Promise((resolve, reject) => {
       const timeoutPromise = new Promise((_, timeoutReject) => {
         setTimeout(() => {
           timeoutReject(new Error(`Job ${job.id} timed out`))
@@ -103,16 +103,17 @@ export class Worker<P extends Record<string, unknown>> {
       const executerPromise = this.executer(job.payload)
       if (executerPromise) {
         cancel = executerPromise[CANCEL]
-        try {
-          await Promise.race([timeoutPromise, executerPromise])
-          resolve(undefined)
-        } catch (error) {
-          // cancel task if has cancel method
-          if (executerPromise[CANCEL] && typeof executerPromise[CANCEL] === "function") {
-            executerPromise[CANCEL]!()
-          }
-          reject(error)
-        }
+        Promise.race([timeoutPromise, executerPromise])
+          .then(() => {
+            resolve(undefined)
+          })
+          .catch((error) => {
+            // cancel task if has cancel method
+            if (executerPromise[CANCEL] && typeof executerPromise[CANCEL] === "function") {
+              executerPromise[CANCEL]!()
+            }
+            reject(error)
+          })
       }
     })
     promise[CANCEL] = cancel
